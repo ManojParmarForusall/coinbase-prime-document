@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class CoinbasePrime::Orders - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link"><a href="Client.html">CoinbasePrime::Client</a>
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-i-cancel">#cancel</a>
+    <li ><a href="#method-i-create">#create</a>
+    <li ><a href="#method-i-fetch">#fetch</a>
+    <li ><a href="#method-i-fills">#fills</a>
+    <li ><a href="#method-i-list">#list</a>
+    <li ><a href="#method-i-open_orders">#open_orders</a>
+    <li ><a href="#method-i-preview">#preview</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-CoinbasePrime::Orders">
+  <h1 id="class-CoinbasePrime::Orders" class="class">
+    class CoinbasePrime::Orders
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Orders.html"><code>Orders</code></a> API&#39;s</p>
+
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+        <dt id="PORTFOLIO_PATH">PORTFOLIO_PATH
+        <dd>
+      </dl>
+    </section>
+
+
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-cancel" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">cancel</span><span
+            class="method-args">(order_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Cancel an order. (Filled orders cannot be canceled.)</p>
+
+<h4 id="method-i-cancel-label-options">options<span><a href="#method-i-cancel-label-options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>order_id</code> -  [String] the valid order id.</p>
+</li></ul>
+
+<h4 id="method-i-cancel-label-Returns">Returns<span><a href="#method-i-cancel-label-Returns">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>a hash with status code and order id</p>
+</dd></dl>
+</li></ul>
+
+          <div class="method-source-code" id="cancel-source">
+            <pre><span class="ruby-comment"># File lib/coinbase_prime/orders.rb, line 135</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cancel</span>(<span class="ruby-identifier">order_id</span>)
+  <span class="ruby-identifier">format_response</span>(
+    <span class="ruby-identifier">post</span>(
+      <span class="ruby-node">&quot;#{PORTFOLIO_PATH}/orders/#{order_id}/cancel&quot;</span>
+    )
+  )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-create" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">(params = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Create Order</p>
+
+<h4 id="method-i-create-label-options">options<span><a href="#method-i-create-label-options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>portfolio_id</code> -       [String] Id of portfolio.</p>
+</li><li>
+<p><code>product_id</code>         - [String] A valid product id (e.g. “BTC-USD”)</p>
+</li><li>
+<p><code>client_order_id</code>    - [String] Order ID selected by you to identify</p>
+</li></ul>
+
+<p>your orde</p>
+<ul><li>
+<p><code>type</code>               -  [String]</p>
+
+<pre>Market: market
+LIMIT: limit
+TWAP: twap</pre>
+</li><li>
+<p><code>base_quantity</code>      -  [String]</p>
+</li><li>
+<p><code>quote_value</code>        -  [String]</p>
+</li><li>
+<p><code>limit_price</code>        -  [String]</p>
+</li><li>
+<p><code>start_time</code>         -  [String] In DateTime format</p>
+</li><li>
+<p><code>expiry_time</code>        -  [String] In DateTime format</p>
+</li><li>
+<p><code>time_in_force</code>      -  [String]</p>
+
+<pre>GOOD_UNTIL_DATE_TIME: Good until date time
+GOOD_UNTIL_CANCELLED: good until cancelled
+IMMEDIATE_OR_CANCEL: immediate or cancel</pre>
+</li><li>
+<p><code>display_quote_size</code> -  [String]</p>
+</li><li>
+<p><code>display_base_size</code>  -  [String]</p>
+</li><li>
+<p><code>stp_id</code>             -  [String] Self-trade prevention flag</p>
+</li></ul>
+
+<h4 id="method-i-create-label-Returns">Returns<span><a href="#method-i-create-label-Returns">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>a hash with list of open orders along with pagination</p>
+</dd></dl>
+</li></ul>
+
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File lib/coinbase_prime/orders.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">format_response</span>(<span class="ruby-identifier">post</span>(<span class="ruby-node">&quot;#{PORTFOLIO_PATH}/order&quot;</span>, <span class="ruby-value">body:</span> <span class="ruby-identifier">params</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-fetch" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">fetch</span><span
+            class="method-args">(order_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Get Order by Order ID</p>
+
+<h4 id="method-i-fetch-label-options">options<span><a href="#method-i-fetch-label-options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>order_id</code> -  [String] the valid order id.</p>
+</li></ul>
+
+<h4 id="method-i-fetch-label-Returns">Returns<span><a href="#method-i-fetch-label-Returns">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>a hash with status code and order</p>
+</dd></dl>
+</li></ul>
+
+          <div class="method-source-code" id="fetch-source">
+            <pre><span class="ruby-comment"># File lib/coinbase_prime/orders.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch</span>(<span class="ruby-identifier">order_id</span>)
+  <span class="ruby-identifier">format_response</span>(<span class="ruby-identifier">get</span>(<span class="ruby-node">&quot;#{PORTFOLIO_PATH}/orders/#{order_id}&quot;</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-fills" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">fills</span><span
+            class="method-args">(order_id, params = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <h4 id="method-i-fills-label-options">options<span><a href="#method-i-fills-label-options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>order_id</code>        - [String] The order ID generated by Coinbase</p>
+</li><li>
+<p><code>cursor</code>          - [String] Cursor used for pagination</p>
+</li></ul>
+
+<p>(last consumed record)</p>
+<ul><li>
+<p><code>limit</code>             -  [Int] Number of items to retrieve.</p>
+</li><li>
+<p><code>sort_direction</code>    -  [String] Sorting order.</p>
+</li></ul>
+
+<h4 id="method-i-fills-label-Returns">Returns<span><a href="#method-i-fills-label-Returns">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>a hash with status code and fills.</p>
+</dd></dl>
+</li></ul>
+
+          <div class="method-source-code" id="fills-source">
+            <pre><span class="ruby-comment"># File lib/coinbase_prime/orders.rb, line 155</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fills</span>(<span class="ruby-identifier">order_id</span>, <span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">operational_url</span> = <span class="ruby-node">&quot;#{PORTFOLIO_PATH}/orders/#{order_id}/fills&quot;</span>
+  <span class="ruby-identifier">query_params</span> = <span class="ruby-identifier">build_query_params</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">operational_url</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39;/?&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">query_params</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">format_response</span>(<span class="ruby-identifier">get</span>(<span class="ruby-identifier">operational_url</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-list" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">list</span><span
+            class="method-args">(params = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <h4 id="method-i-list-label-options">options<span><a href="#method-i-list-label-options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>start_date</code>        - [String] A start date for the orders to be</p>
+</li></ul>
+
+<p>queried from(required)</p>
+<ul><li>
+<p><code>end_date</code>          - [String] n end date for the orders to be</p>
+</li></ul>
+
+<p>queried from.</p>
+<ul><li>
+<p><code>order_statuses</code>    - [Array] Order ID selected by you to identify</p>
+
+<pre>OPEN: The order is open but unfilled
+FILLED: The order was filled
+CANCELLED: The order was cancelled
+EXPIRED: The order has expired
+FAILED: Order submission failed
+PENDING: The order has been sent but is not</pre>
+</li></ul>
+
+<p>yet confirmed your orde</p>
+<ul><li>
+<p><code>product_ids</code>       -  [Array] List of products by which to</p>
+</li></ul>
+
+<p>filter the response.</p>
+<ul><li>
+<p><code>order_type</code>        -  [String] Order type by which to filter the</p>
+</li></ul>
+
+<p>response.</p>
+<ul><li>
+<p><code>cursor</code>            -  [String] Cursor used for pagination</p>
+</li></ul>
+
+<p>(last consumed record)</p>
+<ul><li>
+<p><code>limit</code>             -  [Int] Number of items to retrieve.</p>
+</li><li>
+<p><code>sort_direction</code>    -  [String] Sorting order.</p>
+</li><li>
+<p><code>order_side</code>        -  [String] An order side to filter on.</p>
+</li></ul>
+
+<h4 id="method-i-list-label-Returns">Returns<span><a href="#method-i-list-label-Returns">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>a hash with status code and orders.</p>
+</dd></dl>
+</li></ul>
+
+          <div class="method-source-code" id="list-source">
+            <pre><span class="ruby-comment"># File lib/coinbase_prime/orders.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">operational_url</span> = <span class="ruby-node">&quot;#{PORTFOLIO_PATH}/orders&quot;</span>
+  <span class="ruby-identifier">query_params</span> = <span class="ruby-identifier">build_query_params</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">operational_url</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39;/?&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">query_params</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">query_params</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">format_response</span>(<span class="ruby-identifier">get</span>(<span class="ruby-identifier">operational_url</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-open_orders" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">open_orders</span><span
+            class="method-args">(_params = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>@params [String] ProductID e.g. BTC-USD @return [Hash] list of addresses</p>
+
+          <div class="method-source-code" id="open_orders-source">
+            <pre><span class="ruby-comment"># File lib/coinbase-prime/orders.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">open_orders</span>(<span class="ruby-identifier">_params</span> = {})
+  <span class="ruby-identifier">format_response</span>(<span class="ruby-identifier">get</span>(<span class="ruby-node">&quot;#{PORTFOLIO_PATH}/open_orders&quot;</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-preview" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">preview</span><span
+            class="method-args">(params = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <h4 id="method-i-preview-label-options">options<span><a href="#method-i-preview-label-options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>portfolio_id</code> -       [String] Id of portfolio.</p>
+</li><li>
+<p><code>product_id</code>         - [String] A valid product id (e.g. “BTC-USD”)</p>
+</li><li>
+<p><code>client_order_id</code>    - [String] Order ID selected by you to identify</p>
+</li></ul>
+
+<p>your orde</p>
+<ul><li>
+<p><code>type</code>               -  [String]</p>
+
+<pre>Market: market
+LIMIT: limit
+TWAP: twap</pre>
+</li><li>
+<p><code>base_quantity</code>      -  [String]</p>
+</li><li>
+<p><code>quote_value</code>        -  [String]</p>
+</li><li>
+<p><code>limit_price</code>        -  [String]</p>
+</li><li>
+<p><code>start_time</code>         -  [String] In DateTime format</p>
+</li><li>
+<p><code>expiry_time</code>        -  [String] In DateTime format</p>
+</li><li>
+<p><code>time_in_force</code>      -  [String]</p>
+
+<pre>GOOD_UNTIL_DATE_TIME: Good until date time
+GOOD_UNTIL_CANCELLED: good until cancelled
+IMMEDIATE_OR_CANCEL: immediate or cancel</pre>
+</li></ul>
+
+<h4 id="method-i-preview-label-Returns">Returns<span><a href="#method-i-preview-label-Returns">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>a hash with status code and order details.</p>
+</dd></dl>
+</li></ul>
+
+          <div class="method-source-code" id="preview-source">
+            <pre><span class="ruby-comment"># File lib/coinbase_prime/orders.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">preview</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">format_response</span>(<span class="ruby-identifier">post</span>(<span class="ruby-node">&quot;#{PORTFOLIO_PATH}/order_preview&quot;</span>, <span class="ruby-value">body:</span> <span class="ruby-identifier">params</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
